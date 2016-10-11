@@ -1,0 +1,5 @@
+check process jabber
+  with pidfile /var/vcap/sys/run/jabber/pid
+  start program "/var/vcap/jobs/jabber/bin/ctl start"
+  stop program "/var/vcap/jobs/jabber/bin/ctl stop"
+  group vcap
