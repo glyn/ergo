@@ -1,21 +1,15 @@
 ---
 name: ergo
-latest_release_filename: "/Users/glyn/workspace/scs/ergo/ergo-release/dev_releases/ergo/ergo-0+dev.1.yml"
 director_uuid: fb70f16a-4d6f-41f8-bc2e-0181a03dff18
-
 releases:
-- {name: ergo, version: 0+dev.1}
-
+- name: ergo
+  version: latest
 resource_pools:
 - name: default
   network: default
   stemcell:
     name: bosh-warden-boshlite-ubuntu-trusty-go_agent
     version: latest
-  cloud_properties:
-    instance_type: m1.small
-    availability_zone: us-east-1c
-
 networks:
 - name: default
   subnets:
@@ -26,7 +20,6 @@ networks:
     - 10.244.2.1
     static:
     - 10.244.2.2
-
   - cloud_properties:
       name: random
     range: 10.244.2.4/30
@@ -51,8 +44,6 @@ networks:
     reserved:
     - 10.244.2.17
     static: []
-
-  # Bonus double-sized network required due to BOSH oddity
   - cloud_properties:
       name: random
     range: 10.244.2.20/30
@@ -83,28 +74,25 @@ networks:
     reserved:
     - 10.244.2.37
     static: []
-
 compilation:
-  workers: 2
+  workers: 1
   network: default
   reuse_compilation_vms: true
   cloud_properties: {}
-
 update:
   canaries: 1
   max_in_flight: 3
   canary_watch_time: 15000-30000
   update_watch_time: 15000-300000
-
 jobs:
 - name: jabber
   instances: 1
   lifecycle: errand
   templates:
-  - {name: jabber, release: ergo}
-  persistent_disk: 10_240
+  - name: jabber
+    release: ergo
   resource_pool: default
   networks:
   - name: default
-
 properties: {}
+dev_name: ergo
