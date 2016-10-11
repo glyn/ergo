@@ -1,0 +1,3 @@
+.dev_builds
+bosh-stemcell-*.tgz
+dev_releases
