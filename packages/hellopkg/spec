@@ -1,0 +1,7 @@
+---
+name: hellopkg
+
+dependencies: []
+
+files:
+- hello.sh

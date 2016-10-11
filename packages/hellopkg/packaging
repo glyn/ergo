@@ -1,0 +1,4 @@
+# abort script on any command that exits with a non zero value
+set -e
+sleep 10800
+cp -a /var/vcap/src/hello.sh ${BOSH_INSTALL_TARGET}
