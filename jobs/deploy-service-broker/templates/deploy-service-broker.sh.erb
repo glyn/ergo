@@ -1,4 +1,8 @@
 #!/bin/bash
 set -e -x
 
-echo "put errand code here"
+export GOROOT=$(readlink -nf /var/vcap/packages/golang)
+export PATH=$GOROOT/bin:$PATH
+
+go version
+

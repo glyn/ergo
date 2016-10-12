@@ -4,4 +4,4 @@ templates:
   deploy-service-broker.sh.erb: bin/run
 
 packages:
-  - hellopkg
+  - golang
