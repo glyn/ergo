@@ -1,6 +1,6 @@
 ---
 name: ergo
-director_uuid: fb70f16a-4d6f-41f8-bc2e-0181a03dff18
+director_uuid: %%UUID%%
 releases:
 - name: ergo
   version: latest
