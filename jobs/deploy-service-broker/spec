@@ -5,3 +5,4 @@ templates:
 
 packages:
   - golang
+  - deploy-errand

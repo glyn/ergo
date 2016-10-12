@@ -1,8 +1,7 @@
 #!/bin/bash
 set -e -x
 
-export GOROOT=$(readlink -nf /var/vcap/packages/golang)
-export PATH=$GOROOT/bin:$PATH
+export DEPLOY_ERRAND_PACKAGE=$(readlink -nf /var/vcap/packages/deploy-errand)
+export PATH=$DEPLOY_ERRAND_PACKAGE/bin:$PATH
 
-go version
-
+deploy-errand
