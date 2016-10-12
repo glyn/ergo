@@ -2,4 +2,5 @@
 bosh-stemcell-*.tgz
 dev_releases
 ergo-boshlite-manifest.yml
+blobs
 
