@@ -1,0 +1,8 @@
+---
+name: deploy-service-broker
+templates:
+  deploy-service-broker.sh.erb: bin/run
+
+packages:
+  - golang
+  - deploy-errand

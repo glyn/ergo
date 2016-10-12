@@ -1,0 +1,7 @@
+---
+name: deploy-errand
+dependencies:
+  - golang
+
+files:
+  - github.com/pivotal-cf/deploy-errand/*.go
