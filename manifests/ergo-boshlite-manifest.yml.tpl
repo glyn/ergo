@@ -85,11 +85,11 @@ update:
   canary_watch_time: 15000-30000
   update_watch_time: 15000-300000
 jobs:
-- name: jabber
+- name: deploy-service-broker
   instances: 1
   lifecycle: errand
   templates:
-  - name: jabber
+  - name: deploy-service-broker
     release: ergo
   resource_pool: default
   networks:
