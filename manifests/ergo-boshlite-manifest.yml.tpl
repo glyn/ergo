@@ -94,5 +94,10 @@ jobs:
   resource_pool: default
   networks:
   - name: default
-properties: {}
+properties:
+  domain: bosh-lite.com
+  spring_cloud_broker:
+    cf:
+      admin_user: admin
+      admin_password: admin
 dev_name: ergo
