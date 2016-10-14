@@ -4,7 +4,9 @@ First target and login (admin/admin) in to your BOSH director, then run the foll
 
 Currently only a BOSH-lite manifest is provided. The provided manifest also assumes CF is deployed to BOSH-lite. If this is not the case, edit:
 
-```ergo-boshlite-manifest.yml.tpl```
+```
+ergo-boshlite-manifest.yml.tpl
+```
 
 and modify:
 
