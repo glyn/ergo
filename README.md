@@ -22,7 +22,7 @@ $ ./manifests/make-boshlite-manifest.sh
 $ bosh deployment ./manifests/ergo-boshlite-manifest.yml
 ```
 
-If this is your first time creating a dev release and have not added packages to your local bosh blobs:
+If this is your first time creating a dev release and have not added the golang archive to your local bosh blobs, for example:
 
 ```
 $ wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
@@ -33,6 +33,14 @@ $ bosh add blob cf-cli_6.22.1_linux_x86-64.tgz cf-cli/
 $ rm cf-cli_6.22.1_linux_x86-64.tgz
 ```
 
+You may also need to upload a stemcell to BOSH-lite, for example:
+
+```
+$ bosh public stemcells
+$ bosh download public stemcell bosh-stemcell-389-warden-boshlite-ubuntu-trusty-go_agent.tgz
+$ bosh upload stemcell bosh-stemcell-389-warden-boshlite-ubuntu-trusty-go_agent.tgz
+```
+
 You do not need to do 'bosh upload blobs' per the output for the dev release.
 
 ```
@@ -40,6 +48,13 @@ $ bosh create release --force --name ergo
 $ bosh upload release ./dev_releases/ergo/ergo-0+dev.XXXX.yml (the value for XXXX can be found in the output of the create release commend executed prior)
 $ bosh -n deploy
 $ bosh run errand deploy-service-broker
+```
+
+Observe the following evidence of the errand executing Go code in the output:
+
+```
+[stdout]
+hello from golang
 ```
 
 To delete the deployment:
