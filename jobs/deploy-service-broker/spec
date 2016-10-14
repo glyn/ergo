@@ -5,4 +5,13 @@ templates:
 
 packages:
   - golang
+  - cf-cli
   - deploy-errand
+
+properties:
+  spring_cloud_broker.cf.admin_user:
+    description: 'Username of the CF admin user'
+  spring_cloud_broker.cf.admin_password:
+    description: 'Password of the CF admin user'
+  domain:
+    description: 'Cloud Foundry system domain'

@@ -1,10 +1,11 @@
 set -e
 
-PACKAGE_NAME=github.com/pivotal-cf/deploy-errand
+PACKAGE_NAME=deploy-errand
 PACKAGE_DIR=${BOSH_INSTALL_TARGET}/src/
 
 mkdir -p $PACKAGE_DIR
-cp -a github.com/ $PACKAGE_DIR
+cp -a deploy-errand/ $PACKAGE_DIR
+cp -a cf/ $PACKAGE_DIR
 
 export GOROOT=$(readlink -nf /var/vcap/packages/golang)
 export GOPATH=$BOSH_INSTALL_TARGET
