@@ -56,7 +56,10 @@ Observe the following evidence of the errand executing Go code in the output:
 
 ```
 [stdout]
-hello from golang
+* Starting deploy errand
+....
+....
+* Finished deploy errand
 ```
 
 To delete the deployment:
@@ -69,4 +72,47 @@ To delete the release:
 
 ```
 $ bosh -n delete release ergo
+```
+
+Setting up your local environmet to develop errand code and run tests:
+
+* First append to your $GOPATH the directory housing the Go errands:
+
+```
+export GOPATH=$GOPATH:/path/to/ergo/errands/
+```
+
+* NOTE: Consider modifying your shell environment configuration (.bash_profile, etc) file so you don't need to modify your GOPATH each time.
+
+* Make code changes as needed then build and install, for example:
+
+```
+go install deploy-errand
+```
+
+The resulting binary can be found in:
+
+```
+errands/bin/deploy-errand
+```
+
+* Tests can be run in a similar fashion:
+
+```
+$ cd errands/src/deploy-errand
+$ go test -v
+```
+
+Observe the following evidence of the Go test in the output:
+
+```
+=== RUN   TestValidGetUserId
+--- PASS: TestValidGetUserId (0.00s)
+=== RUN   TestInvalidGetUserId
+Failed to obtain UID for user name: user: unknown user someuserthatdoesnotexist
+--- FAIL: TestInvalidGetUserId (0.00s)
+	deploy_errand_test.go:25: Failed to obtain UID: user: unknown user someuserthatdoesnotexist
+FAIL
+exit status 1
+FAIL	deploy-errand	0.007s
 ```
