@@ -8,16 +8,29 @@ import (
 	"strconv"
 )
 
-const packageName = "spring-cloud-service-broker"
-const packagePath = "/var/vcap/packages/" + packageName
+const defaultVcapSysDir = "/var/vcap/sys"
+const defaultVcapRunDir = defaultVcapSysDir + "/run/" + jobName
+const defaultVcapLogDir = defaultVcapSysDir + "/log" + jobName
+
 const jobName = "deploy-service-broker"
-const runDir = "/var/vcap/sys/run/" + jobName
-const logDir = "/var/vcap/sys/log/" + jobName
-const vcapUser = "vcap"
-const vcapGroup = "vcap"
 
 func main() {
 	fmt.Println("* Starting deploy errand")
+
+	runDir := os.Getenv("VCAP_DIR_PREFIX") + defaultVcapRunDir
+	logDir := os.Getenv("VCAP_DIR_PREFIX") + defaultVcapLogDir
+
+	vcapUser := "vcap"
+
+	if os.Getenv("VCAP_USER_NAME") != "" {
+		vcapUser = os.Getenv("VCAP_USER_NAME")
+	}
+
+	vcapGroup := "vcap"
+
+	if os.Getenv("VCAP_GROUP_NAME") != "" {
+		vcapGroup = os.Getenv("VCAP_GROUP_NAME")
+	}
 
 	setupVcapDirs([]string{runDir, logDir}, vcapUser, vcapGroup)
 	displayCfVersion()
@@ -28,10 +41,9 @@ func main() {
 }
 
 func setupVcapDirs(paths []string, userName string, groupName string) {
-	err := createVcapDirs([]string{runDir, logDir}, vcapUser, vcapGroup)
+	err := createVcapDirs(paths, userName, groupName)
 
 	if err != nil {
-		fmt.Printf("Failed to setup vcap dirs: %s\n", err)
 		os.Exit(1)
 	}
 }
@@ -92,7 +104,7 @@ func getUserId(userName string) (int, error) {
 	u, err := user.Lookup(userName)
 
 	if err != nil {
-		fmt.Printf("Failed to obtain UID for user name: %s\n", err)
+		fmt.Printf("Failed to obtain UID: %s\n", err)
 		return -1, err
 	}
 
@@ -105,7 +117,7 @@ func getGroupId(groupName string) (int, error) {
 	g, err := user.LookupGroup(groupName)
 
 	if err != nil {
-		fmt.Printf("Failed to obtain GID for group name: %s\n", groupName, err)
+		fmt.Printf("Failed to obtain GID: %s\n", err)
 		return -1, err
 	}
 
