@@ -4,8 +4,7 @@ PACKAGE_NAME=deploy-errand
 PACKAGE_DIR=${BOSH_INSTALL_TARGET}/src/
 
 mkdir -p $PACKAGE_DIR
-cp -a deploy-errand/ $PACKAGE_DIR
-cp -a cf/ $PACKAGE_DIR
+cp -a */ $PACKAGE_DIR
 
 export GOROOT=$(readlink -nf /var/vcap/packages/golang)
 export GOPATH=$BOSH_INSTALL_TARGET
