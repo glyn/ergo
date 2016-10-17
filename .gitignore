@@ -4,4 +4,6 @@ dev_releases
 ergo-boshlite-manifest.yml
 blobs
 config/dev.yml
+errands/bin
+errands/pkg
 
