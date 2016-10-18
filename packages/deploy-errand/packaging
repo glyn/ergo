@@ -1,6 +1,6 @@
 set -e
 
-PACKAGE_NAME=deploy-errand
+PACKAGE_NAME=github.com/glyn/ergo/deploy-errand
 PACKAGE_DIR=${BOSH_INSTALL_TARGET}/src/
 
 mkdir -p $PACKAGE_DIR

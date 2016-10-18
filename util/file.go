@@ -36,7 +36,7 @@ func mkdir(paths []string) error {
 }
 
 func chown(paths []string, userName string, groupName string) error {
-	userId, err := getUserId(userName)
+	userId, err := GetUserId(userName)
 
 	if err != nil {
 		return err
@@ -59,7 +59,7 @@ func chown(paths []string, userName string, groupName string) error {
 	return nil
 }
 
-func getUserId(userName string) (int, error) {
+func GetUserId(userName string) (int, error) {
 	u, err := user.Lookup(userName)
 
 	if err != nil {

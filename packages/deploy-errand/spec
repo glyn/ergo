@@ -4,6 +4,6 @@ dependencies:
   - golang
 
 files:
-  - deploy-errand/**/*.go
-  - cf/**/*.go
-  - util/**/*.go
+  - github.com/glyn/ergo/cf/*.go
+  - github.com/glyn/ergo/deploy-errand/*.go
+  - github.com/glyn/ergo/util/*.go

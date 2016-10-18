@@ -1,10 +1,10 @@
 package main
 
 import (
-	"cf"
+	"github.com/glyn/ergo/cf"
+	"github.com/glyn/ergo/util"
 	"fmt"
 	"os"
-	"util"
 )
 
 const defaultVcapSysDir = "/var/vcap/sys"

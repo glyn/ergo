@@ -2,12 +2,13 @@ package main
 
 import (
 	"testing"
+	"github.com/glyn/ergo/util"
 )
 
 // example test code using built in testing package
 
 func TestValidGetUserId(t *testing.T) {
-	userId, err := getUserId("root")
+	userId, err := util.GetUserId("root")
 
 	if err != nil {
 		t.Errorf("Failed to obtain UID: %s", err)
@@ -19,11 +20,7 @@ func TestValidGetUserId(t *testing.T) {
 }
 
 func TestInvalidGetUserId(t *testing.T) {
-	_, err := getUserId("someuserthatdoesnotexist")
-
-	if err != nil {
-		t.Errorf("Failed to obtain UID: %s", err)
-	}
+	_, err := util.GetUserId("someuserthatdoesnotexist")
 
 	if err == nil {
 		t.Errorf("Expected not to find user: someuserthatdoesnotexist but was found")

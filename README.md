@@ -1,4 +1,6 @@
-Ergo - Errands in Go POC
+# Ergo - Errands in Go POC
+
+## bosh release development
 
 First target and login (admin/admin) in to your BOSH director, then run the following commands to generate a BOSH manifest, create a dev release, deploy it and run the "deploy-service-broker" errands.
 
@@ -74,27 +76,41 @@ To delete the release:
 $ bosh -n delete release ergo
 ```
 
-Setting up your local environmet to develop errand code and run tests:
+## Go errand development
 
-* First append to your $GOPATH the directory housing the Go errands:
-
-```
-export GOPATH=$GOPATH:/path/to/ergo/errands/
-```
-
-* NOTE: Consider modifying your shell environment configuration (.bash_profile, etc) file so you don't need to modify your GOPATH each time.
-
-* Make code changes as needed then build and install, for example:
+* Get this repository into your $GOPATH:
 
 ```
-go install deploy-errand
+go get github.com/glyn/ergo
+```
+Then change directory to the repository, typically to $GOPATH/src/github.com/glyn/ergo.
+
+Adjust the remote if you need to be able to push back changes and check out the branch you want to work on:
+```
+git remote set-url origin git@github.com:glyn/ergo.git
+git checkout -b feature-branch-nnnnnnnn
 ```
 
-The resulting binary can be found in:
+* Make code changes as needed then run the unit tests:
+```
+go test ./...
+```
+
+Observe that the tests pass, for example:
+```
+$ go test ./...
+?   	github.com/glyn/ergo/cf		[no test files]
+ok  	github.com/glyn/ergo/deploy-errand	0.011s
+?   	github.com/glyn/ergo/util	[no test files]
+```
+
+* If you want to test an errand binary locally, build and install, for example:
 
 ```
-errands/bin/deploy-errand
+go install github.com/glyn/ergo/deploy-errand
 ```
+
+The resulting binary can be found in the usual place, typically `$GOPATH/bin`.
 
 This binary will be compiled for the architecture you are running on. To invoke the errand from the command line, a few environment variables are required:
 
@@ -119,24 +135,3 @@ SYSTEM_DOMAIN=bosh-lite.com ADMIN_USER=admin ADMIN_PASSWORD=admin VCAP_DIR_PREFI
 ```
 
 You can also set these environment variables into your shell for one time usage or persist them in the appropriate shell config file
-
-* To run tests:
-
-```
-$ cd errands/src/deploy-errand
-$ go test -v
-```
-
-Observe the following evidence of the Go test in the output:
-
-```
-=== RUN   TestValidGetUserId
---- PASS: TestValidGetUserId (0.00s)
-=== RUN   TestInvalidGetUserId
-Failed to obtain UID for user name: user: unknown user someuserthatdoesnotexist
---- FAIL: TestInvalidGetUserId (0.00s)
-	deploy_errand_test.go:25: Failed to obtain UID: user: unknown user someuserthatdoesnotexist
-FAIL
-exit status 1
-FAIL	deploy-errand	0.007s
-```
