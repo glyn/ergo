@@ -4,21 +4,7 @@
 
 First target and login (admin/admin) in to your BOSH director, then run the following commands to generate a BOSH manifest, create a dev release, deploy it and run the "deploy-service-broker" errands.
 
-Currently only a BOSH-lite manifest is provided. The provided manifest also assumes CF is deployed to BOSH-lite. If this is not the case, edit:
-
-```
-ergo-boshlite-manifest.yml.tpl
-```
-
-and modify:
-
-```
-properties.domain
-properties.spring_cloud_broker.cf.admin_user
-properties.spring_cloud_broker.cf.admin_password
-```
-
-To whatever values that match the CF environment you are targeting. Information on deploying CF to bosh-lite can be found at: https://github.com/cloudfoundry/bosh-lite#deploy-cloud-foundry
+Currently only a BOSH-lite manifest is provided.
 
 ```
 $ bosh target https://192.168.50.4
@@ -32,9 +18,6 @@ If this is your first time creating a dev release and have not added the golang 
 $ wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
 $ bosh add blob go1.7.1.linux-amd64.tar.gz golang/
 $ rm go1.7.1.linux-amd64.tar.gz
-$ wget https://s3-us-west-1.amazonaws.com/cf-cli-releases/releases/v6.22.1/cf-cli_6.22.1_linux_x86-64.tgz
-$ bosh add blob cf-cli_6.22.1_linux_x86-64.tgz cf-cli/
-$ rm cf-cli_6.22.1_linux_x86-64.tgz
 ```
 
 You may also need to upload a stemcell to BOSH-lite, for example:
@@ -59,8 +42,6 @@ Observe the following evidence of the errand executing Go code in the output:
 ```
 [stdout]
 * Starting deploy errand
-....
-....
 * Finished deploy errand
 ```
 
@@ -114,26 +95,8 @@ go install github.com/glyn/ergo/deploy-errand
 
 The resulting binary can be found in the usual place, typically `$GOPATH/bin`.
 
-This binary will be compiled for the architecture you are running on. To invoke the errand from the command line, a few environment variables are required:
+This binary will be compiled for the architecture you are running on and you can run it as usual:
 
 ```
-SYSTEM_DOMAIN - the system domain that will be used to target CF, i.e.: lime.springapps.io
-ADMIN_USER - the CF admin user
-ADMIN_PASSWORD - the CF admin password
+./deploy-errand
 ```
-
-The following environment variables are optional can be set to customize settings for local development:
-
-```
-VCAP_USER_NAME - the username to override the default 'vcap' with
-VCAP_GROUP_NAME - the group name to override the default 'vcap' with
-VCAP_DIR_PREFIX - the prefix to use when creating the vcap directory structure
-```
-
-An example local invocation of the deploy-errand binary would look like:
-
-```
-SYSTEM_DOMAIN=bosh-lite.com ADMIN_USER=admin ADMIN_PASSWORD=admin VCAP_DIR_PREFIX=/tmp VCAP_USER_NAME=cschaefer VCAP_GROUP_NAME=wheel ./deploy-errand
-```
-
-You can also set these environment variables into your shell for one time usage or persist them in the appropriate shell config file
