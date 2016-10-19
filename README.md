@@ -83,6 +83,8 @@ $ bosh -n delete release ergo
 ```
 go get github.com/glyn/ergo
 ```
+Note: this will print a warning `can't load package: package github.com/glyn/ergo: no buildable Go source files [...]` which you can ignore. This is because there are no Go files in the root of the repository.
+
 Then change directory to the repository, typically to $GOPATH/src/github.com/glyn/ergo.
 
 Adjust the remote if you need to be able to push back changes and check out the branch you want to work on:
