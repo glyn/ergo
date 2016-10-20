@@ -27,6 +27,18 @@
 			"revisionTime": "2016-09-16T16:57:21Z"
 		},
 		{
+			"checksumSHA1": "HXsaQo5nxwDj+tVbb9cNgakLp5g=",
+			"path": "github.com/Bowery/prompt",
+			"revision": "d43c2707a6c5a152a344c64bb4fed657e2908a81",
+			"revisionTime": "2016-08-08T16:52:56Z"
+		},
+		{
+			"checksumSHA1": "6VGFARaK8zd23IAiDf7a+gglC8k=",
+			"path": "github.com/dchest/safefile",
+			"revision": "855e8d98f1852d48dde521e0522408d1fe7e836a",
+			"revisionTime": "2015-10-22T10:31:44Z"
+		},
+		{
 			"checksumSHA1": "kJZwKgItK649siyPYj5wDepK7Wk=",
 			"path": "github.com/golang/protobuf/proto",
 			"revision": "5baca1b63153b1a82014546382edbdd302b138b6",
@@ -43,6 +55,96 @@
 			"path": "github.com/golang/protobuf/proto/testdata",
 			"revision": "5baca1b63153b1a82014546382edbdd302b138b6",
 			"revisionTime": "2015-10-23T02:49:00Z"
+		},
+		{
+			"checksumSHA1": "3VJcSYFds0zeIO5opOs0AoKm3Mw=",
+			"path": "github.com/google/shlex",
+			"revision": "6f45313302b9c56850fc17f99e40caebce98c716",
+			"revisionTime": "2015-01-27T13:39:51Z"
+		},
+		{
+			"checksumSHA1": "pxp2CJIkeVDSr+yV1AA/sYLK8ls=",
+			"path": "github.com/kardianos/govendor",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "m24kWw3bFoAkKVvTjmxSLsywdHY=",
+			"path": "github.com/kardianos/govendor/cliprompt",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "BydQB80R+bFd0PjdBHoIuxZKAsk=",
+			"path": "github.com/kardianos/govendor/context",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "KSyKTljMVB41I4NNqvc8dM8DHXk=",
+			"path": "github.com/kardianos/govendor/help",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "IykEJ4TqvyJkhw38fzH6pDJ5/VM=",
+			"path": "github.com/kardianos/govendor/internal/gt",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "ghSinDJZ4mfjGPSL6CJ/cODCNSU=",
+			"path": "github.com/kardianos/govendor/internal/pathos",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "EhhUfeAlLL/QzVM2gwwGXv5ogAc=",
+			"path": "github.com/kardianos/govendor/internal/vfilepath",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "2Vg+J79rEhmtnprErQ7fTZdneIk=",
+			"path": "github.com/kardianos/govendor/internal/vos",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "LSlGkYXfhGKHZA0L1kta0MGkaFI=",
+			"path": "github.com/kardianos/govendor/migrate",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "b+z44yevn7HU3Z+ixsPS88dBKUs=",
+			"path": "github.com/kardianos/govendor/pkgspec",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "I9oQBOtXoOinofTJrBE+zI+vDCs=",
+			"path": "github.com/kardianos/govendor/prompt",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "dxMOo7q95j/pnwcItyyyiAe0J58=",
+			"path": "github.com/kardianos/govendor/run",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "bwT5csmFy3Vle+BSj8C+bIuIJUY=",
+			"path": "github.com/kardianos/govendor/vcs",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
+		},
+		{
+			"checksumSHA1": "a7fBBNrf1j2DncY4nvrvXoara6I=",
+			"path": "github.com/kardianos/govendor/vendorfile",
+			"revision": "120a6099270fc9360236f4383430e2adda6181cc",
+			"revisionTime": "2016-10-17T04:59:17Z"
 		},
 		{
 			"checksumSHA1": "5gUkw5ZmyCH8FDQ9AEyUuWg7QVo=",
@@ -229,6 +331,30 @@
 			"path": "github.com/onsi/gomega/types",
 			"revision": "2152b45fa28a361beba9aab0885972323a444e28",
 			"revisionTime": "2015-10-07T03:56:56Z"
+		},
+		{
+			"checksumSHA1": "btuIVd4+XdXRmK3OiIdmKpzEl+s=",
+			"path": "github.com/pkg/errors",
+			"revision": "839d9e913e063e28dfd0e6c7b7512793e0a48be9",
+			"revisionTime": "2016-10-02T05:25:12Z"
+		},
+		{
+			"checksumSHA1": "5HymxKSV8zcw6eiNV5Z/MZBPmuU=",
+			"path": "golang.org/x/crypto/bcrypt",
+			"revision": "c367d6eeb7c6158125f2f47e049f7eb7e251c09a",
+			"revisionTime": "2016-10-18T21:00:36Z"
+		},
+		{
+			"checksumSHA1": "nkSU+D5ZACy+jm3aEB+Sr5t0Eqc=",
+			"path": "golang.org/x/crypto/blowfish",
+			"revision": "c367d6eeb7c6158125f2f47e049f7eb7e251c09a",
+			"revisionTime": "2016-10-18T21:00:36Z"
+		},
+		{
+			"checksumSHA1": "DCnpD6tK1gC2tb0W5SqihwSsEFw=",
+			"path": "golang.org/x/tools/go/vcs",
+			"revision": "c6efba04dd0d931bb11cd7f556285fa3c9305398",
+			"revisionTime": "2016-10-16T21:18:27Z"
 		}
 	],
 	"rootPath": "github.com/glyn/ergo"
