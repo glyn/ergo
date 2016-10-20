@@ -1,9 +1,9 @@
 package cf
 
 import (
-	"os/exec"
-	"code.cloudfoundry.org/commandrunner"
 	"bytes"
+	"code.cloudfoundry.org/commandrunner"
+	"os/exec"
 )
 
 type CF interface {
@@ -24,7 +24,7 @@ func (cf *cf) DisplayCfVersion() (string, error) {
 	cmd.Stdout = &stdout
 
 	err := cf.commandRunner.Run(cmd)
-	if (err != nil) {
+	if err != nil {
 		return "", err
 	}
 

@@ -6,9 +6,9 @@ import (
 
 	"code.cloudfoundry.org/commandrunner/fake_command_runner"
 	"code.cloudfoundry.org/commandrunner/fake_command_runner/matchers"
+	"errors"
 	"github.com/glyn/ergo/cf"
 	"os/exec"
-	"errors"
 )
 
 var _ = Describe("DisplayCfVersion", func() {
@@ -16,12 +16,12 @@ var _ = Describe("DisplayCfVersion", func() {
 	var fakeRunner *fake_command_runner.FakeCommandRunner
 	var cfWrapper cf.CF
 
-	BeforeEach(func(){
+	BeforeEach(func() {
 		fakeRunner = fake_command_runner.New()
 		cfWrapper = cf.New(fakeRunner)
 	})
 
-	It("invokes cf", func(){
+	It("invokes cf", func() {
 		const testVersion = "cf version 99"
 		expectedCmd := fake_command_runner.CommandSpec{Path: "cf", Args: []string{"-v"}}
 		fakeRunner.WhenRunning(expectedCmd, func(cmd *exec.Cmd) error {

@@ -1,9 +1,9 @@
 package main
 
 import (
+	"code.cloudfoundry.org/commandrunner/linux_command_runner"
 	"fmt"
 	"github.com/glyn/ergo/cf"
-	"code.cloudfoundry.org/commandrunner/linux_command_runner"
 	"os"
 )
 
