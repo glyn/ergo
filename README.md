@@ -62,10 +62,15 @@ $ bosh -n delete release ergo
 
 ## Go errand development
 
+* Get [govendor](https://github.com/kardianos/govendor) (for managing dependencies) into your $GOPATH:
+```
+go get -u github.com/kardianos/govendor
+```
+
 * Get this repository into your $GOPATH:
 
 ```
-go get github.com/glyn/ergo
+go get -u github.com/glyn/ergo
 ```
 Note: this will print a warning `can't load package: package github.com/glyn/ergo: no buildable Go source files [...]` which you can ignore. This is because there are no Go files in the root of the repository.
 
@@ -79,13 +84,14 @@ git checkout -b feature-branch-nnnnnnnn
 
 * Make code changes as needed then run the unit tests:
 ```
-go test ./...
+govendor test +local
 ```
+Note: This avoids running the tests of all the dependencies in the `vendor` directory.
 
 Observe that the tests pass, for example:
 ```
-$ go test ./...
-ok  	github.com/glyn/ergo/cf	0.072s
+$ govendor test +local
+ok  	github.com/glyn/ergo/cf	0.010s
 ?   	github.com/glyn/ergo/deploy-errand	[no test files]
 ```
 
