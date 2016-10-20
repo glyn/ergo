@@ -12,12 +12,15 @@ $ ./manifests/make-boshlite-manifest.sh
 $ bosh deployment ./manifests/ergo-boshlite-manifest.yml
 ```
 
-If this is your first time creating a dev release and have not added the golang archive to your local bosh blobs, for example:
+If this is your first time creating a dev release, add the golang archive and the cf CLI to your local bosh blobs, for example:
 
 ```
 $ wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
 $ bosh add blob go1.7.1.linux-amd64.tar.gz golang/
 $ rm go1.7.1.linux-amd64.tar.gz
+$ wget https://s3-us-west-1.amazonaws.com/cf-cli-releases/releases/v6.22.1/cf-cli_6.22.1_linux_x86-64.tgz
+$ bosh add blob cf-cli_6.22.1_linux_x86-64.tgz cf-cli/
+$ rm cf-cli_6.22.1_linux_x86-64.tgz
 ```
 
 You may also need to upload a stemcell to BOSH-lite, for example:
@@ -82,9 +85,8 @@ go test ./...
 Observe that the tests pass, for example:
 ```
 $ go test ./...
-?   	github.com/glyn/ergo/cf		[no test files]
-ok  	github.com/glyn/ergo/deploy-errand	0.011s
-?   	github.com/glyn/ergo/util	[no test files]
+ok  	github.com/glyn/ergo/cf	0.072s
+?   	github.com/glyn/ergo/deploy-errand	[no test files]
 ```
 
 * If you want to test an errand binary locally, build and install, for example:

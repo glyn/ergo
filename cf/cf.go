@@ -1,27 +1,32 @@
 package cf
 
-import "os/exec"
+import (
+	"os/exec"
+	"code.cloudfoundry.org/commandrunner"
+	"bytes"
+)
 
-func DisplayCfVersion() (string, error) {
+type CF interface {
+	DisplayCfVersion() (string, error)
+}
+
+type cf struct {
+	commandRunner commandrunner.CommandRunner
+}
+
+func New(commandRunner commandrunner.CommandRunner) CF {
+	return &cf{commandRunner: commandRunner}
+}
+
+func (cf *cf) DisplayCfVersion() (string, error) {
+	var stdout bytes.Buffer
 	cmd := exec.Command("cf", "-v")
-	output, err := cmd.Output()
+	cmd.Stdout = &stdout
 
-	return string(output), err
-}
+	err := cf.commandRunner.Run(cmd)
+	if (err != nil) {
+		return "", err
+	}
 
-func CfTarget(systemDomain string) (string, error) {
-	apiEndpoint := "api." + systemDomain
-
-	// TODO: make ssl validation conditional
-	cmd := exec.Command("cf", "api", apiEndpoint, "--skip-ssl-validation")
-	output, err := cmd.Output()
-
-	return string(output), err
-}
-
-func CfAuth(userName string, password string) (string, error) {
-	cmd := exec.Command("cf", "auth", userName, password)
-	output, err := cmd.Output()
-
-	return string(output), err
+	return stdout.String(), err
 }
