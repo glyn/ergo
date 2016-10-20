@@ -31,9 +31,10 @@ var _ = Describe("DisplayCfVersion", func() {
 
 		version, err := cfWrapper.DisplayCfVersion()
 
-		Expect(version).To(Equal(testVersion))
-		Expect(err).NotTo(HaveOccurred())
 		Expect(fakeRunner).To(fake_command_runner_matchers.HaveExecutedSerially(expectedCmd))
+
+		Expect(err).NotTo(HaveOccurred())
+		Expect(version).To(Equal(testVersion))
 	})
 
 	It("propagates errors", func() {
@@ -44,6 +45,8 @@ var _ = Describe("DisplayCfVersion", func() {
 		})
 
 		_, err := cfWrapper.DisplayCfVersion()
+
+		Expect(fakeRunner).To(fake_command_runner_matchers.HaveExecutedSerially(expectedCmd))
 
 		Expect(err).To(MatchError(testError))
 	})

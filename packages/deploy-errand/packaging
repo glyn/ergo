@@ -10,5 +10,8 @@ export GOROOT=$(readlink -nf /var/vcap/packages/golang)
 export GOPATH=$BOSH_INSTALL_TARGET
 export PATH=$GOROOT/bin:$PATH
 
+# better to use `govendor test +local` but this requires git
 go test $PACKAGE_NAME
+go test github.com/glyn/ergo/cf
+
 go install $PACKAGE_NAME
