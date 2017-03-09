@@ -4,7 +4,7 @@
 
 First target and login (admin/admin) in to your BOSH director, then run the following commands to generate a BOSH manifest, create a dev release, deploy it and run the "deploy-service-broker" errands.
 
-Currently only a BOSH-lite manifest is provided.
+Currently only a BOSH-lite manifest is provided, so you must be running [BOSH-lite](https://github.com/cloudfoundry/bosh-lite).
 
 ```
 $ bosh target https://192.168.50.4
