@@ -4,5 +4,6 @@ set -e -x
 export DEPLOY_ERRAND_PACKAGE=$(readlink -nf /var/vcap/packages/deploy-errand)
 export CF_CLI_PACKAGE=$(readlink -nf /var/vcap/packages/cf-cli)
 export PATH=$DEPLOY_ERRAND_PACKAGE/bin:$CF_CLI_PACKAGE/bin:$PATH
+export SAMPLE=<%= properties.spring_cloud_broker.cf.sample %>
 
 exec deploy-errand

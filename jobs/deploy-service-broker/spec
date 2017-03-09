@@ -8,4 +8,7 @@ packages:
   - cf-cli
   - deploy-errand
 
-properties: {}
+properties:
+  spring_cloud_broker.cf.sample:
+    description: 'Sample Text'
+    default: default-sample-text

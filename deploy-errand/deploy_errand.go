@@ -1,14 +1,16 @@
 package main
 
 import (
-	"code.cloudfoundry.org/commandrunner/linux_command_runner"
 	"fmt"
-	"github.com/glyn/ergo/cf"
 	"os"
+
+	"code.cloudfoundry.org/commandrunner/linux_command_runner"
+	"github.com/glyn/ergo/cf"
 )
 
 func main() {
 	fmt.Println("* Starting deploy errand")
+	fmt.Printf("$SAMPLE=%s\n", os.Getenv("SAMPLE"))
 
 	cf := cf.New(linux_command_runner.New())
 	v, err := cf.DisplayCfVersion()
