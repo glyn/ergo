@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"code.cloudfoundry.org/commandrunner"
 	"os/exec"
+	"code.cloudfoundry.org/commandrunner/linux_command_runner"
 )
 
 type CF interface {
@@ -16,6 +17,10 @@ type cf struct {
 
 func New(commandRunner commandrunner.CommandRunner) CF {
 	return &cf{commandRunner: commandRunner}
+}
+
+func DefaultNew() CF {
+	return &cf{commandRunner: linux_command_runner.New()}
 }
 
 func (cf *cf) DisplayCfVersion() (string, error) {

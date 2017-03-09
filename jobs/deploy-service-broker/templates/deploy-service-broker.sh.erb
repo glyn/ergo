@@ -1,9 +1,19 @@
 #!/bin/bash
 set -e -x
 
-export DEPLOY_ERRAND_PACKAGE=$(readlink -nf /var/vcap/packages/deploy-errand)
-export CF_CLI_PACKAGE=$(readlink -nf /var/vcap/packages/cf-cli)
-export PATH=$DEPLOY_ERRAND_PACKAGE/bin:$CF_CLI_PACKAGE/bin:$PATH
-export SAMPLE=<%= properties.spring_cloud_broker.cf.sample %>
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-exec deploy-errand
+PACKAGE_NAME=github.com/glyn/ergo/templated-deploy-errand
+PACKAGE_DIR=$DIR/../src/
+
+export GOROOT=$(readlink -nf /var/vcap/packages/golang)
+export DEPLOY_ERRAND_PACKAGE=$(readlink -nf /var/vcap/packages/deploy-errand)
+export GOPATH=$DEPLOY_ERRAND_PACKAGE:$DIR/..
+export PATH=$GOROOT/bin:$PATH
+
+go install $PACKAGE_NAME
+
+export CF_CLI_PACKAGE=$(readlink -nf /var/vcap/packages/cf-cli)
+export PATH=$DIR:$CF_CLI_PACKAGE/bin:$PATH
+
+exec templated-deploy-errand

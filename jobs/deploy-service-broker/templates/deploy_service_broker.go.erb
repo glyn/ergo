@@ -1,0 +1,23 @@
+package main
+
+import (
+	"fmt"
+	"os"
+
+	"github.com/glyn/ergo/cf"
+)
+
+func main() {
+	fmt.Println("* Starting templated deploy errand")
+	fmt.Printf("spring_cloud_broker.cf.sample=%s\n", "<%= properties.spring_cloud_broker.cf.sample %>")
+
+	cf := cf.DefaultNew()
+	v, err := cf.DisplayCfVersion()
+	if err != nil {
+		fmt.Printf("cf.DisplayCfVersion failed: %s\n", err)
+		os.Exit(1)
+	}
+	fmt.Println(v)
+
+	fmt.Println("* Finished templated deploy errand")
+}
