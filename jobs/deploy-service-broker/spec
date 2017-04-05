@@ -1,7 +1,7 @@
 ---
 name: deploy-service-broker
 templates:
-  deploy-service-broker.sh.erb: bin/run
+  deploy-service-broker.sh: bin/run
   props.json.erb: bin/props.json
 
 packages:
