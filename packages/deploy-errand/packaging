@@ -14,4 +14,4 @@ export PATH=$GOROOT/bin:$PATH
 go test $PACKAGE_NAME
 go test github.com/glyn/ergo/cf
 
-go build $PACKAGE_NAME
+go install $PACKAGE_NAME

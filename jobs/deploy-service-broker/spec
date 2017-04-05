@@ -2,7 +2,6 @@
 name: deploy-service-broker
 templates:
   deploy-service-broker.sh.erb: bin/run
-  deploy_service_broker.go.erb: src/github.com/glyn/ergo/templated-deploy-errand/deploy_service_broker.go
   props.json.erb: bin/props.json
 
 packages:
